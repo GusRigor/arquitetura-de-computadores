@@ -17,4 +17,6 @@ ADD S ;conteúdo de A é somado ao conteúdo de S
 ADD T ;conteúdo de A é somado ao conteúdo de T
 ADD A ;conteúdo de A é somado ao conteúdo de A
 STA V ;conteúdo de A é copiado para V
+OUT 0 ;conteúdo de A é apresentado no output
+
 HLT   ;processador para
