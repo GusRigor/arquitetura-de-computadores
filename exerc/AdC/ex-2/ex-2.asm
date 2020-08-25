@@ -19,7 +19,6 @@ X EQU 202 ; Posição CA é X
 Y EQU 203 ; Posição CB é Y
 
 ORG 0
-
 AB:
   LDA B ; acumulador A recebe conteúdo B
   STA Y ; Copiando acumulador A para Y
