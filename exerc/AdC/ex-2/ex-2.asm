@@ -4,15 +4,17 @@
 ; Data: 25/08/2020
 ;---------------------------------------------------
 
-A EQU 160 ; Posição A0 é A
-B EQU 161 ; Posição A1 é B
-C EQU 162 ; Posição A2 é C
-D EQU 163 ; Posição A3 é D
-E EQU 164 ; Posição A4 é E
-F EQU 165 ; Posição A5 é F
-G EQU 166 ; Posição A6 é G
-H EQU 167 ; Posição A7 é H
-Z EQU 170 ; Posição A8 é Z
+A EQU 192 ; Posição C0 é A
+B EQU 193 ; Posição C1 é B
+C EQU 194 ; Posição C2 é C
+D EQU 195 ; Posição C3 é D
+E EQU 196 ; Posição C4 é E
+F EQU 197 ; Posição C5 é F
+G EQU 198 ; Posição C6 é G
+H EQU 199 ; Posição C7 é H
+I EQU 200 ; Posição C8 é H
+J EQU 201 ; Posição C9 é H
+Z EQU 202 ; Posição CA é Z
 
 ORG 0
 
@@ -79,12 +81,32 @@ AG:
 AH:
   LDA A ; acumulador A recebe conteúdo A
   SUB H ; subtrai conteúdo do A por H
-  JN  BC ; se der negativo, A é maior q H
+  JN  AI ; se der negativo, A é maior q H
   LDA A
   STA Z
   LDA H
   STA A
   LDA Z
   STA H
+AI:
+  LDA A ; acumulador A recebe conteúdo A
+  SUB I ; subtrai conteúdo do A por I
+  JN  AJ ; se der negativo, A é maior q I
+  LDA A
+  STA Z
+  LDA I
+  STA A
+  LDA Z
+  STA I
+AJ:
+  LDA A ; acumulador A recebe conteúdo A
+  SUB J ; subtrai conteúdo do A por J
+  JN  BC ; se der negativo, A é maior q J
+  LDA A
+  STA Z
+  LDA J
+  STA A
+  LDA Z
+  STA J
 BC:
   HLT
