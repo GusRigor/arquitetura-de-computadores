@@ -12,101 +12,116 @@ E EQU 196 ; Posição C4 é E
 F EQU 197 ; Posição C5 é F
 G EQU 198 ; Posição C6 é G
 H EQU 199 ; Posição C7 é H
-I EQU 200 ; Posição C8 é H
-J EQU 201 ; Posição C9 é H
-Z EQU 202 ; Posição CA é Z
+I EQU 200 ; Posição C8 é I
+J EQU 201 ; Posição C9 é J
+
+X EQU 202 ; Posição CA é X
+Y EQU 203 ; Posição CB é Y
 
 ORG 0
 
 AB:
-  LDA A ; acumulador A recebe conteúdo A
-  SUB B ; subtrai conteúdo do A por B
-  JN  AC ; se der negativo, A é maior q B
+  LDA B ; acumulador A recebe conteúdo B
+  STA Y ; Copiando acumulador A para Y
+  SUB A ; subtrai conteúdo do A por B
+  JN TA ; se der negativo, A é maior q B
+  JN TB ; se der negativo, A é maior q B 
   LDA A
-  STA Z
+  STA X
   LDA B
   STA A
-  LDA Z
+  LDA X
   STA B
 AC:
   LDA A ; acumulador A recebe conteúdo A
   SUB C ; subtrai conteúdo do A por C
-  JN  AD ; se der negativo, A é maior q D
+  JN  BC ; se der negativo, A é maior q D
   LDA A
-  STA Z
+  STA X
   LDA C
   STA A
-  LDA Z
+  LDA X
   STA C
-AD:
-  LDA A ; acumulador A recebe conteúdo A
-  SUB D ; subtrai conteúdo do A por D
-  JN  AE ; se der negativo, A é maior q D
+
+TA: ; Troca o valor no auxiliar Y para A
   LDA A
-  STA Z
+  STA X
+  LDA Y
+  STA A
+  LDA X
+  STA Y ; Ficando Y com o conteúdo de A
+
+TB:  ; Troca o valor no auxiliar Y para B
+  LDA B
+  STA X
+  LDA Y
+  STA B
+  LDA X
+  STA Y ; Ficando Y com o conteúdo de B
+
+TC:  ; Troca o valor no auxiliar Y para C
+  LDA C
+  STA X
+  LDA Y
+  STA C
+  LDA X
+  STA Y ; Ficando Y com o conteúdo de C
+
+TD:  ; Troca o valor no auxiliar Y para D
   LDA D
-  STA A
-  LDA Z
+  STA X
+  LDA Y
   STA D
-AE:
-  LDA A ; acumulador A recebe conteúdo A
-  SUB E ; subtrai conteúdo do A por E
-  JN  AF ; se der negativo, A é maior q E
-  LDA A
-  STA Z
+  LDA X
+  STA Y ; Ficando Y com o conteúdo de D
+
+TE:  ; Troca o valor no auxiliar Y para E
   LDA E
-  STA A
-  LDA Z
+  STA X
+  LDA Y
   STA E
-AF:
-  LDA A ; acumulador A recebe conteúdo A
-  SUB F ; subtrai conteúdo do A por F
-  JN  AG ; se der negativo, A é maior q F
-  LDA A
-  STA Z
+  LDA X
+  STA Y ; Ficando Y com o conteúdo de E
+
+TF:  ; Troca o valor no auxiliar Y para F
   LDA F
-  STA A
-  LDA Z
+  STA X
+  LDA Y
   STA F
-AG:
-  LDA A ; acumulador A recebe conteúdo A
-  SUB G ; subtrai conteúdo do A por G
-  JN  AH ; se der negativo, A é maior q G
-  LDA A
-  STA Z
+  LDA X
+  STA Y ; Ficando Y com o conteúdo de F
+
+TG:  ; Troca o valor no auxiliar Y para G
   LDA G
-  STA A
-  LDA Z
+  STA X
+  LDA Y
   STA G
-AH:
-  LDA A ; acumulador A recebe conteúdo A
-  SUB H ; subtrai conteúdo do A por H
-  JN  AI ; se der negativo, A é maior q H
-  LDA A
-  STA Z
+  LDA X
+  STA Y ; Ficando Y com o conteúdo de G
+
+TH:  ; Troca o valor no auxiliar Y para H
   LDA H
-  STA A
-  LDA Z
+  STA X
+  LDA Y
   STA H
-AI:
-  LDA A ; acumulador A recebe conteúdo A
-  SUB I ; subtrai conteúdo do A por I
-  JN  AJ ; se der negativo, A é maior q I
-  LDA A
-  STA Z
+  LDA X
+  STA Y ; Ficando Y com o conteúdo de H
+
+TI:  ; Troca o valor no auxiliar Y para I
   LDA I
-  STA A
-  LDA Z
+  STA X
+  LDA Y
   STA I
-AJ:
-  LDA A ; acumulador A recebe conteúdo A
-  SUB J ; subtrai conteúdo do A por J
-  JN  BC ; se der negativo, A é maior q J
-  LDA A
-  STA Z
+  LDA X
+  STA Y ; Ficando Y com o conteúdo de I
+
+TJ:  ; Troca o valor no auxiliar Y para J
   LDA J
-  STA A
-  LDA Z
+  STA X
+  LDA Y
   STA J
+  LDA X
+  STA Y ; Ficando Y com o conteúdo de J
+
 BC:
   HLT
