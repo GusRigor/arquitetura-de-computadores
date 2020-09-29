@@ -1,7 +1,7 @@
 ;---------------------------------------------------
 ; Programa: Organizando um vetor
 ; Autor: Gustavo G. Rigor
-; Data: 25/08/2020
+; Data: 28/09/2020
 ;---------------------------------------------------
 
 ;Colocar os valores na posição E0 a EE
